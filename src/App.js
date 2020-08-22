@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+const Missions = lazy(() => import("./components/missions/missions"));
+const History = lazy(() => import("./components/history/history"));
+const Payloads = lazy(() => import("./components/payloads"));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Missions</h1>
+      <Suspense fallback={<div>Loading......</div>}>
+        <Missions />
+      </Suspense>
+      <h1>History</h1>
+      <Suspense fallback={<div>Loading......</div>}>
+        <History />
+      </Suspense>
+      <h1>Payloads</h1>
+      <Suspense fallback={<div>Loading......</div>}>
+        <Payloads />
+      </Suspense>
     </div>
   );
 }
