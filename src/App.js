@@ -1,25 +1,33 @@
-import React, { Suspense, lazy } from "react";
-const Missions = lazy(() => import("./components/missions/missions"));
-const History = lazy(() => import("./components/history/history"));
-const Payloads = lazy(() => import("./components/payloads"));
+import React, { Fragment, Suspense, lazy } from "react";
+import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import theme from "./theme";
+import GlobalStyles from "./GlobalStyles";
+import * as serviceWorker from "./serviceWorker";
+import Pace from "./components/shared/Pace";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Missions</h1>
-      <Suspense fallback={<div>Loading......</div>}>
-        <Missions />
-      </Suspense>
-      <h1>History</h1>
-      <Suspense fallback={<div>Loading......</div>}>
-        <History />
-      </Suspense>
-      <h1>Payloads</h1>
-      <Suspense fallback={<div>Loading......</div>}>
-        <Payloads />
-      </Suspense>
-    </div>
+    <BrowserRouter>
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <GlobalStyles />
+        <Pace color={theme.palette.primary.light} />
+        <Suspense fallback={<Fragment />}>
+          <Switch>
+            <Route path="/user">
+              <LoggedInComponent />
+            </Route>
+            <Route>
+              <LoggedOutComponent />
+            </Route>
+          </Switch>
+        </Suspense>
+      </MuiThemeProvider>
+    </BrowserRouter>
   );
-}
+};
+
+serviceWorker.register();
 
 export default App;
