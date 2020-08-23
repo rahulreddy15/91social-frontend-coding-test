@@ -231,14 +231,6 @@ class Launches extends React.Component {
             content="Information about past SpaceX launches"
           />
         </Helmet>
-        <figure className="feature-img">
-          <img
-            src="images/rocket-sm.jpg"
-            srcSet="images/rocket-sm.jpg 400w, images/rocket-md.jpg 800w, images/rocket-lg.jpg 1200w, images/rocket-xl.jpg 2200w"
-            sizes="100vw"
-            alt="SpaceX rocket launching"
-          />
-        </figure>
         <article>
           <header className="article-header">
             <h1>SpaceX Launches</h1>

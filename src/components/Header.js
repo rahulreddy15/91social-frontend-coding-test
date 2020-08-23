@@ -1,11 +1,11 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from '../../spacex-logo.svg';
-import styled from 'styled-components';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import logo from "../spacex-logo.svg";
+import styled from "styled-components";
 
-import Navigation from './Navigation';
+import Navigation from "./Navigation";
 
-const Header = styled.header`
+const TopNav = styled.header`
   padding: 0.75rem 0 0;
   background: #181c1f;
 
@@ -27,13 +27,13 @@ const Header = styled.header`
   }
 `;
 
-const Masthead = () => (
-  <Header>
+const Header = () => (
+  <TopNav>
     <NavLink to="/" exact>
       <img src={logo} alt="SpaceX logo" />
     </NavLink>
     <Navigation />
-  </Header>
+  </TopNav>
 );
 
-export default Masthead;
+export default Header;

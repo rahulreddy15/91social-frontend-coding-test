@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-import Masthead from './static/Masthead';
-import Footer from './static/Footer';
-import Error404 from './static/404';
+import Header from './Header';
+import Footer from './Footer';
+import Error404 from './404';
 
 import Home from './home/Home';
 import Launches from './launches/Launches';
 import Rockets from './rockets/Rockets';
 import Capsules from './capsules/Capsules';
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Masthead />
+          <Header />
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/launches" component={Launches} />
@@ -28,6 +26,5 @@ class App extends Component {
       </BrowserRouter>
     );
   }
-}
 
 export default App;

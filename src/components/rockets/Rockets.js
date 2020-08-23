@@ -27,14 +27,7 @@ class Rockets extends React.Component {
             content="Information about past SpaceX rockets"
           />
         </Helmet>
-        <figure className="feature-img">
-          <img
-            src="images/hangar-sm.jpg"
-            srcSet="images/hangar-sm.jpg 400w, images/hangar-md.jpg 800w, images/hangar-lg.jpg 1200w, images/hangar-xl.jpg 2200w"
-            sizes="100vw"
-            alt="SpaceX rockets in a hangar"
-          />
-        </figure>
+        
         <article>
           <header className="article-header">
             <h1>SpaceX Rockets</h1>
