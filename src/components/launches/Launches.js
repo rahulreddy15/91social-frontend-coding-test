@@ -1,7 +1,7 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import styled from 'styled-components';
-import LaunchCard from './LaunchCard';
+import React from "react";
+import Helmet from "react-helmet";
+import styled from "styled-components";
+import LaunchCard from "./LaunchCard";
 
 const LaunchForm = styled.form`
   background: #eee;
@@ -76,20 +76,20 @@ class Launches extends React.Component {
   // Grab data from the API, set it to state
   // Take state data and create and set formControls in state
   componentDidMount() {
-    fetch('https://api.spacexdata.com/v2/launches/?order=desc')
-      .then(res => res.json())
-      .then(data => this.setState({ data: data }))
+    fetch("https://api.spacexdata.com/v2/launches/?order=desc")
+      .then((res) => res.json())
+      .then((data) => this.setState({ data: data }))
       .then(() => init(this.state.data))
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
 
-    const init = arr => {
-      let yearFiltered = [...new Set(arr.map(item => item.launch_year))];
-      yearFiltered.unshift('any');
+    const init = (arr) => {
+      let yearFiltered = [...new Set(arr.map((item) => item.launch_year))];
+      yearFiltered.unshift("any");
 
       let successesFiltered = [
-        ...new Set(arr.map(item => item.launch_success.toString())),
+        ...new Set(arr.map((item) => item.launch_success.toString())),
       ];
-      successesFiltered.unshift('any');
+      successesFiltered.unshift("any");
 
       // 1. Take a copy of the current state
       const controls = { ...this.state.formControls };
@@ -117,7 +117,7 @@ class Launches extends React.Component {
                   ref={this.yearSelect}
                   onChange={this.setFilters}
                 >
-                  {this.state.formControls.launch_year.map(year => (
+                  {this.state.formControls.launch_year.map((year) => (
                     <option value={year} key={year}>
                       {year}
                     </option>
@@ -132,7 +132,7 @@ class Launches extends React.Component {
                   ref={this.successSelect}
                   onChange={this.setFilters}
                 >
-                  {this.state.formControls.launch_success.map(status => (
+                  {this.state.formControls.launch_success.map((status) => (
                     <option value={status} key={status}>
                       {status}
                     </option>
@@ -144,7 +144,7 @@ class Launches extends React.Component {
                   Reset Filters
                 </button>
               ) : (
-                ''
+                ""
               )}
             </div>
           </fieldset>
@@ -157,7 +157,7 @@ class Launches extends React.Component {
   };
 
   // Update state.filters, state.filteredData, and state.filtered based on form submittal
-  setFilters = e => {
+  setFilters = (e) => {
     // UPDATING STATE.FILTERS
     e.preventDefault();
 
@@ -168,7 +168,7 @@ class Launches extends React.Component {
     const yearSelectIndex = this.yearSelect.current.selectedIndex;
     let year = this.yearSelect.current[yearSelectIndex].value;
 
-    if (year !== 'any') {
+    if (year !== "any") {
       filters.launch_year = year;
     } else {
       delete filters.launch_year;
@@ -177,7 +177,7 @@ class Launches extends React.Component {
     const successSelectIndex = this.successSelect.current.selectedIndex;
     let success = this.successSelect.current[successSelectIndex].value;
 
-    if (success !== 'any') {
+    if (success !== "any") {
       filters.launch_success = success;
     } else {
       delete filters.launch_success;
@@ -191,14 +191,14 @@ class Launches extends React.Component {
     // For each key, reduce the data based on the key value
     // If there are no keys in the filters array, set filteredData to state data
     let filtered;
-    const filter = key => {
+    const filter = (key) => {
       if (!filtered) {
         filtered = this.state.data.filter(
-          card => card[key].toString() === this.state.filters[key]
+          (card) => card[key].toString() === this.state.filters[key]
         );
       } else {
         filtered = filtered.filter(
-          card => card[key].toString() === this.state.filters[key]
+          (card) => card[key].toString() === this.state.filters[key]
         );
       }
 
@@ -238,11 +238,11 @@ class Launches extends React.Component {
           <div className="article-wrapper">{this.buildForm()}</div>
           <div className="wrapper card-wrapper">
             {this.state.filtered
-              ? this.state.filteredData.map(card => (
-                  <LaunchCard {...card} key={'flight-' + card.flight_number} />
+              ? this.state.filteredData.map((card) => (
+                  <LaunchCard {...card} key={"flight-" + card.flight_number} />
                 ))
-              : this.state.data.map(card => (
-                  <LaunchCard {...card} key={'flight-' + card.flight_number} />
+              : this.state.data.map((card) => (
+                  <LaunchCard {...card} key={"flight-" + card.flight_number} />
                 ))}
           </div>
         </article>

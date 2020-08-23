@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Card = styled.section``;
 
-const CapsuleCard = props => (
+const DragonCard = (props) => (
   <Card className="card">
     <div>
       <h2>{props.name}</h2>
@@ -36,8 +36,8 @@ const CapsuleCard = props => (
         <li>Partner: {props.heat_shield.dev_partner}</li>
       </ul>
       <h3>Thrusters</h3>
-      {props.thrusters.map(thruster => (
-        <ul key={'thruster-' + thruster.type}>
+      {props.thrusters.map((thruster) => (
+        <ul key={"thruster-" + thruster.type}>
           <li>Type: {thruster.type}</li>
           <li>Pods: {thruster.pods}</li>
           <li>Fuel 1: {thruster.fuel_1}</li>
@@ -74,4 +74,4 @@ const CapsuleCard = props => (
   </Card>
 );
 
-export default CapsuleCard;
+export default DragonCard;

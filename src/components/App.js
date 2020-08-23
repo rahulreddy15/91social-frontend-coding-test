@@ -7,7 +7,7 @@ import Error404 from "./404";
 import Home from "./Home";
 import Launches from "./launches/Launches";
 import Rockets from "./rockets/Rockets";
-import Capsules from "./capsules/Capsules";
+import Dragons from "./dragons/Dragons";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/" component={Home} exact />
           <Route path="/launches" component={Launches} />
           <Route path="/rockets" component={Rockets} />
-          <Route path="/capsules" component={Capsules} />
+          <Route path="/dragons" component={Dragons} />
           <Route component={Error404} />
         </Switch>
         <Footer />

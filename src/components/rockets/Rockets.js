@@ -6,7 +6,7 @@ const Rockets = () => {
   const [rockets, setRockets] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.spacexdata.com/v2/rockets")
+    fetch("https://api.spacexdata.com/v3/rockets")
       .then((res) => res.json())
       .then((data) => setRockets(data))
       .catch((err) => console.error(err));

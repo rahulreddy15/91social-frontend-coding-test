@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 const Nav = styled.nav`
   @media (min-width: 46em) {
@@ -45,7 +45,7 @@ const Nav = styled.nav`
     text-decoration: none;
     text-transform: uppercase;
     transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     letter-spacing: 0.03125em;
 
     &.active,
@@ -84,8 +84,8 @@ const Navigation = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/capsules" exact activeClassName="active">
-          Capsules
+        <NavLink to="/dragons" exact activeClassName="active">
+          Dragons
         </NavLink>
       </li>
     </ul>
