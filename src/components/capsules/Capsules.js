@@ -1,46 +1,36 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import CapsuleCard from './CapsuleCard';
+import React, { useState, useEffect } from "react";
+import Helmet from "react-helmet";
+import CapsuleCard from "./CapsuleCard";
 
-class Capsules extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-    };
-  }
+const Capsules = () => {
+  const [capsules, setCapsules] = useState([]);
 
-  componentDidMount() {
-    fetch('https://api.spacexdata.com/v2/capsules')
-      .then(res => res.json())
-      .then(data => this.setState({ data: data }))
-      .catch(err => console.error(err));
-  }
+  useEffect(() => {
+    fetch("https://api.spacexdata.com/v2/capsules")
+      .then((res) => res.json())
+      .then((data) => setCapsules(data))
+      .catch((err) => console.error(err));
+  }, [capsules]);
 
-  render() {
-    return (
-      <div className="component-wrapper">
-        <Helmet>
-          <title>SpaceX Capsules</title>
-          <meta
-            name="description"
-            content="Information about SpaceX capsules"
-          />
-        </Helmet>
-        
-        <article>
-          <header className="article-header">
-            <h1>SpaceX Capsules</h1>
-          </header>
-          <div className="wrapper card-wrapper">
-            {this.state.data.map(item => (
-              <CapsuleCard {...item} key={'capsule-' + item.id} />
-            ))}
-          </div>
-        </article>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="component-wrapper">
+      <Helmet>
+        <title>SpaceX Capsules</title>
+        <meta name="description" content="Information about SpaceX capsules" />
+      </Helmet>
+
+      <article>
+        <header className="article-header">
+          <h1>SpaceX Capsules</h1>
+        </header>
+        <div className="wrapper card-wrapper">
+          {capsules.map((item) => (
+            <CapsuleCard {...item} key={"capsule-" + item.id} />
+          ))}
+        </div>
+      </article>
+    </div>
+  );
+};
 
 export default Capsules;

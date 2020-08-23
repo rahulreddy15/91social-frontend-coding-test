@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 
-const Article = styled.article`
+const HomeStyle = styled.div`
   position: relative;
   min-height: 100%;
   width: 100%;
@@ -83,7 +83,7 @@ const Home = () => {
         />
       </Helmet>
 
-      <Article>
+      <HomeStyle>
         <header className="article-header">
           <h1>About SpaceX</h1>
         </header>
@@ -133,7 +133,7 @@ const Home = () => {
             </ul>
           </section>
         </div>
-      </Article>
+      </HomeStyle>
     </div>
   );
 };

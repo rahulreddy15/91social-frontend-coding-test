@@ -1,46 +1,39 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import RocketCard from './RocketCard';
+import React, { useState, useEffect } from "react";
+import Helmet from "react-helmet";
+import RocketCard from "./RocketCard";
 
-class Rockets extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-    };
-  }
+const Rockets = () => {
+  const [rockets, setRockets] = useState([]);
 
-  componentDidMount() {
-    fetch('https://api.spacexdata.com/v2/rockets')
-      .then(res => res.json())
-      .then(data => this.setState({ data: data }))
-      .catch(err => console.error(err));
-  }
+  useEffect(() => {
+    fetch("https://api.spacexdata.com/v2/rockets")
+      .then((res) => res.json())
+      .then((data) => setRockets(data))
+      .catch((err) => console.error(err));
+  }, [rockets]);
 
-  render() {
-    return (
-      <div className="component-wrapper">
-        <Helmet>
-          <title>SpaceX Rockets</title>
-          <meta
-            name="description"
-            content="Information about past SpaceX rockets"
-          />
-        </Helmet>
-        
-        <article>
-          <header className="article-header">
-            <h1>SpaceX Rockets</h1>
-          </header>
-          <div className="wrapper card-wrapper">
-            {this.state.data.map(item => (
-              <RocketCard {...item} key={'rocket-' + item.rocketid} />
-            ))}
-          </div>
-        </article>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="component-wrapper">
+      <Helmet>
+        <title>SpaceX Rockets</title>
+        <meta
+          name="description"
+          content="Information about past SpaceX rockets"
+        />
+      </Helmet>
+
+      <article>
+        <header className="article-header">
+          <h1>SpaceX Rockets</h1>
+        </header>
+        <div className="wrapper card-wrapper">
+          {rockets.map((item) => (
+            <RocketCard {...item} key={"rocket-" + item.rocketid} />
+          ))}
+        </div>
+      </article>
+    </div>
+  );
+};
 
 export default Rockets;
