@@ -112,7 +112,7 @@ const LaunchesHooks = () => {
                   name="form-filter-year"
                   id="form-filter-year"
                   ref={yearSelect}
-                  onChange={(e) => setFiltersFunction(e)}
+                  onChange={() => setFiltersFunction()}
                 >
                   {formControls.launch_year.map((year) => (
                     <option value={year} key={year}>
@@ -156,8 +156,7 @@ const LaunchesHooks = () => {
     }
   };
 
-  const setFiltersFunction = (e) => {
-    e.preventDefault();
+  const setFiltersFunction = () => {
     // 1. Take a copy of the current state
     const filtersCopy = filters;
 
