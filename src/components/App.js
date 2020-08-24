@@ -12,7 +12,7 @@ const Dragons = lazy(() => import("./dragons/Dragons"));
 const App = () => {
   return (
     <BrowserRouter>
-      <React.Fragment className="App Fade">
+      <div className="App Fade">
         <Header />
         <Suspense fallback={<React.Fragment />}>
           <Switch>
@@ -24,7 +24,7 @@ const App = () => {
           </Switch>
         </Suspense>
         <Footer />
-      </React.Fragment>
+      </div>
     </BrowserRouter>
   );
 };

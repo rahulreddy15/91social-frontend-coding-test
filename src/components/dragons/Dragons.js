@@ -10,7 +10,7 @@ const Dragons = () => {
       .then((res) => res.json())
       .then((data) => setDragons(data))
       .catch((err) => console.error(err));
-  }, [dragons]);
+  }, []);
 
   return (
     <div className="component-wrapper">

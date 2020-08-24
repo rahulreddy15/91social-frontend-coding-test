@@ -92,7 +92,7 @@ const LaunchesHooks = () => {
       .then((data) => setData(data))
       .then(() => initialize(data))
       .catch((err) => console.error(err));
-  }, [data]);
+  }, []);
 
   useEffect(() => {
     console.log(filtered);

@@ -10,7 +10,7 @@ const Rockets = () => {
       .then((res) => res.json())
       .then((data) => setRockets(data))
       .catch((err) => console.error(err));
-  }, [rockets]);
+  }, []);
 
   return (
     <div className="component-wrapper">
@@ -28,7 +28,7 @@ const Rockets = () => {
         </header>
         <div className="wrapper card-wrapper">
           {rockets.map((item) => (
-            <RocketCard {...item} key={"rocket-" + item.rocketid} />
+            <RocketCard {...item} key={"rocket-" + item.name} />
           ))}
         </div>
       </article>

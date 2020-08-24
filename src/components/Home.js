@@ -71,7 +71,8 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setCompanyInfo(data))
       .catch((err) => console.error(err));
-  }, [companyInfo]);
+    console.log("Here");
+  }, []);
 
   return (
     <div className="component-wrapper component-home">
