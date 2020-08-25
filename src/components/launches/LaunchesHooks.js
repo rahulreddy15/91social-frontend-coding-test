@@ -92,7 +92,7 @@ const LaunchesHooks = () => {
       .then((data) => setData(data))
       .then(() => initialize(data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     console.log(filtered);
@@ -127,7 +127,7 @@ const LaunchesHooks = () => {
                   name="form-filter-success"
                   id="form-filter-success"
                   ref={successSelect}
-                  onChange={(e) => setFiltersFunction(e)}
+                  onChange={() => setFiltersFunction()}
                 >
                   {formControls.launch_success.map((status) => (
                     <option value={status} key={status}>

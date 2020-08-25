@@ -14,7 +14,7 @@ const App = () => {
     <BrowserRouter>
       <div className="App Fade">
         <Header />
-        <Suspense fallback={<React.Fragment />}>
+        <Suspense fallback={<div>Loading ...</div>}>
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/launches" component={LaunchesHooks} />
